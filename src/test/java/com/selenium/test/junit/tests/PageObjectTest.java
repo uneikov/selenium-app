@@ -23,7 +23,9 @@ public class PageObjectTest {
 
     @Before
     public void beforeTest() {
-        System.setProperty("webdriver.gecko.driver", "/webdriver/geckodriver");
+        
+        //System.setProperty("webdriver.gecko.driver", "C:\\Users\\URAN\\IdeaProjects\\drivers\\geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\JavaProject\\drivers\\chromedriver.exe");
         WebDriverFactory.startBrowser(true);
     }
 
