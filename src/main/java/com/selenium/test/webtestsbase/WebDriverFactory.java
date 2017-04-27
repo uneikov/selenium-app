@@ -1,10 +1,9 @@
 package com.selenium.test.webtestsbase;
 
 import com.selenium.test.configuration.TestsConfig;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -56,6 +55,9 @@ public class WebDriverFactory {
                         break;
                     case IE10:
                         driver = new InternetExplorerDriver(CapabilitiesGenerator.getDefaultCapabilities(Browser.IE10));
+                        break;
+                    case EDGE:
+                        driver = new EdgeDriver(CapabilitiesGenerator.getDefaultCapabilities(Browser.EDGE));
                         break;
                     case SAFARI:
                         driver = new SafariDriver(CapabilitiesGenerator.getDefaultCapabilities(Browser.SAFARI));

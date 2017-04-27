@@ -1,5 +1,6 @@
 package com.selenium.test.testng.tests;
 
+import com.selenium.test.InitSystemProperties;
 import com.selenium.test.testng.listeners.ScreenShotOnFailListener;
 import com.selenium.test.webtestsbase.WebDriverFactory;
 import org.openqa.selenium.By;
@@ -21,8 +22,7 @@ public class SimpleTest {
 
     @BeforeTest
     public void beforeTest() {
-        //System.setProperty("webdriver.gecko.driver", "C:\\JavaProject\\drivers\\geckodriver.exe");
-        System.setProperty("webdriver.chrome.driver", "C:\\JavaProject\\drivers\\chromedriver.exe");
+        InitSystemProperties.Init();
         WebDriverFactory.startBrowser(true);
     }
 

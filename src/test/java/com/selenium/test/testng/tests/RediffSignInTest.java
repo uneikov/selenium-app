@@ -1,36 +1,23 @@
 package com.selenium.test.testng.tests;
 
-import com.selenium.test.configuration.TestsConfig;
-import com.selenium.test.webtestsbase.Browser;
+import com.selenium.test.InitSystemProperties;
 import com.selenium.test.webtestsbase.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static org.junit.Assert.assertTrue;
 
 public class RediffSignInTest {
-    @BeforeTest
+    @BeforeClass(groups = "rediff")
     public void beforeTest() {
-        Browser browser = new TestsConfig().getBrowser();
-        switch (browser) {
-            case CHROME:
-                System.setProperty("webdriver.chrome.driver", "C:/JavaProject/drivers/chromedriver.exe");
-                break;
-            case FIREFOX:
-                System.setProperty("webdriver.gecko.driver", "C:/JavaProject/drivers/geckodriver.exe");
-                break;
-            case IE10:
-                System.setProperty("webdriver.ie.driver", "C:/JavaProject/drivers/IEDriverServer.exe");
-                /*DesiredCapabilities cap = new DesiredCapabilities();*/
-                /*cap.setCapability(InternetExplorerDriver.IE_ENSURE_CLEAN_SESSION, true);*/
-                break;
-        }
+        InitSystemProperties.Init();
         WebDriverFactory.startBrowser(true);
     }
     
-    @Test
+    @Test(groups = "rediff")
     public void testSignInToRediff() throws Exception{
         String signIn = "neikov@gmail.com";
         WebDriver driver = WebDriverFactory.getDriver();
@@ -51,5 +38,10 @@ public class RediffSignInTest {
         //driver.manage().timeouts().implicitlyWait(5L, TimeUnit.SECONDS);
         driver.close();
         assertTrue("The page title is Rediffmail",title.equals("Rediffmail"));
+    }
+    
+    @AfterClass(groups = {"rediff"})
+    public void afterClass() {
+        WebDriverFactory.finishBrowser();
     }
 }

@@ -1,7 +1,8 @@
 package com.selenium.test.testng.listeners;
 
-import com.selenium.test.webtestsbase.WebDriverFactory;
-import org.testng.*;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
 
 /**
  * Created by Sidelnikov Mikhail on 14.07.15.
@@ -15,12 +16,15 @@ public class ScreenShotOnFailListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-
+        System.out.println();
+        System.out.println("Test <" + iTestResult.getName() + "> successful");
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        WebDriverFactory.takeScreenShot();
+        System.out.println();
+        System.out.println("Test <" + iTestResult.getName() + "> failed");
+        //WebDriverFactory.takeScreenShot();
     }
 
     @Override

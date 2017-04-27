@@ -11,8 +11,7 @@ import org.junit.runners.model.Statement;
  * This rule adds screenshot taking when test  fails
  */
 public class ScreenShotOnFailRule implements TestRule {
-
-
+    
     @Override
     public Statement apply(final Statement base, final Description description) {
         return new Statement() {

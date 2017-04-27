@@ -25,9 +25,20 @@ public class CapabilitiesGenerator {
                 }
                 return DesiredCapabilities.chrome();
             case IE10:
+                
                 DesiredCapabilities caps = DesiredCapabilities.internetExplorer();
                 caps.setVersion("10");
                 return caps;
+            case EDGE:
+                if (System.getProperty("webdriver.edge.driver") == null) {
+                    throw new IllegalStateException("System variable 'webdriver.edge.driver' should be set to path for executable driver");
+                }
+                return DesiredCapabilities.edge();
+                //EdgeOptions options = new EdgeOptions();
+                //capabilities.setCapability(EdgeOptions.CAPABILITY, options);
+                //capabilities.setBrowserName("MicrosoftEdge");
+                //capabilities.setPlatform(Platform.WIN10);
+                //capabilities.setVersion("11");
             case SAFARI:
                 return new DesiredCapabilities();
             default:

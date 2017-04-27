@@ -1,5 +1,6 @@
 package com.selenium.test.junit.tests;
 
+import com.selenium.test.InitSystemProperties;
 import com.selenium.test.junit.rules.ScreenShotOnFailRule;
 import com.selenium.test.pages.YouTubePage;
 import com.selenium.test.pages.YouTubeSearchResultsPage;
@@ -23,9 +24,7 @@ public class PageObjectTest {
 
     @Before
     public void beforeTest() {
-        
-        //System.setProperty("webdriver.gecko.driver", "C:\\Users\\URAN\\IdeaProjects\\drivers\\geckodriver.exe");
-        System.setProperty("webdriver.chrome.driver", "C:\\JavaProject\\drivers\\chromedriver.exe");
+        InitSystemProperties.Init();;
         WebDriverFactory.startBrowser(true);
     }
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Gambling Station Functional Suite">
+    <parameter name="button" value="Лошади"/>
+    <listeners>
+        <listener class-name="com.selenium.test.testng.listeners.ScreenShotOnFailListener" />
+    </listeners>
+    <test name="Functional Test" verbose="2" >
+        <groups>
+            <run>
+                <include name="login"/>
+                <include name="horse"/>
+                <exclude name="rediff"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.selenium.test.testng.tests.GamblingStationTest">
+                <methods>
+                    <include name="testSignInToGamblingStation"/>
+                    <include name="testGoToStakesPageAndFindHorsesButton"/>
+                    <include name="testAbout"/>
+                    <include name="testRegister"/>
+                </methods>
+            </class>
+            <class name="com.selenium.test.testng.tests.RediffSignInTest"/>
+        </classes>
+    </test>
+</suite>
